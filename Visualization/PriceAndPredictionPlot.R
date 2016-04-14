@@ -37,7 +37,7 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 
 
 
-setwd('~/Dropbox/CME practicum/Data/Apr 15th/')
+setwd('~/Dropbox/CME practicum/Data/Apr 15th/Data')
 tdata=read.csv("tradeDataForPlotting.txt")
 p=tdata$trade.price
 n=length(p)
@@ -51,6 +51,11 @@ for(i in 2:nd){
 		direction[i]=direction[i-1]+direction[i]
 }
 tdata$buy.sell=direction
+fu=tdata[tdata$p!='stay',]
+tdata=cbind(tdata[1:(n-1),],p)
+fu=tdata[tdata$p!='stay',]
+percent80=round(0.8*nrow(fu));
+test=fu[percent80:nrow(fu),]
 
 
 tdata=cbind(tdata[1:(n-1),],p)
@@ -108,7 +113,7 @@ vchange1=c(0,vchange)
 data$vol.movement[data$type=='trade']=vchange1
 
 
-fu=data[data$time>=143656051,]
+fu=data[data$time>=1.437187e+08,]
 n=length(fu[,1])
 time=fu$time
 time=(time-time[1])/1000
