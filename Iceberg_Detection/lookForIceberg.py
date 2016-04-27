@@ -22,7 +22,6 @@ with open('/Users/fushuyue/Desktop/python/ESZ5_20150917.txt') as input_file:
         # read data line by line
         a = line.strip().split(',')
 
-
         if a[1] == 'TRADEREC':
 
             date_temp1 = a[0][0:2]+a[0][3:5]+a[0][6:8]+a[0][9:12]
@@ -132,16 +131,16 @@ with open('/Users/fushuyue/Desktop/python/ESZ5_20150917.txt') as input_file:
                             else:
                                 iceberg.append([date_temp1, levelOneBid[0], dictionary[levelOneBid[0]], levelOneBid[1], aggressor, 'part'])
 
-                # empty the variable
-                iceberg_flag = 0
-                tradep = []
-                tradev = []
-                dictionary = {}
+            # empty the variable
+            iceberg_flag = 0
+            tradep = []
+            tradev = []
+            dictionary = {}
 
 
 
 
 df = pd.DataFrame(iceberg, columns = ['time', 'price', 'volume', 'displayed size', 'buy/sell', 'type'])
 
-df.to_csv('iceberg.txt',index=False)
+df.to_csv('/Users/fushuyue/Desktop/iceberg.txt',index=False)
 
