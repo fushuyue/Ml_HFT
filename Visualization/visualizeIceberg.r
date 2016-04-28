@@ -3,11 +3,13 @@ data=read.csv('~/Dropbox/CME practicum/Apr 22nd/Data/with1BookRec.txt')
 fu = iceberg[iceberg$type!='in the spread',]
 library('ggplot2')
 p = ggplot() + 
-	geom_line(data = data, aes(x = time.5.n./10000000, y = trade.price),colour = 'red')+xlab('time')
+	geom_line(data = data, aes(x = time.5.n./10000000, y = trade.price),colour = 'tomato1')+xlab('time')
 
-q = ggplot()+geom_bar(data=fu,aes(x=time/10000000,y=volume),stat='identity',fill = 'dodgerblue2', width = 0.5)+
-			xlab('time') + ylab('iceberg order size')
-f = q + geom_bar(data=data,aes(x=time.5.n./10000000,y=vol),stat='identity',fill = 'grey', alpha=0.5, width = 0.5)
+q = ggplot() + geom_bar(data = data, aes(x = time.5.n./10000000,y=vol), stat ='identity',
+                      fill = 'grey28', alpha=0.8, width = 0.5)
+f = q + geom_bar(data = fu,aes(x = time/10000000, y=volume), stat = 'identity',
+          fill = 'grey60', width = 0.5) + xlab('time') + ylab('order size')
+
 multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   library(grid)
 
